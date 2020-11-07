@@ -43543,6 +43543,8 @@
       <e p="UE4Game.Target.cs" t="Include" />
     </e>
     <e p="Z:\Game Dev\Year 3 UNI\302 Mechanic\Leviathan" t="IncludeFlat">
+      <e p=".gitattributes" t="Include" />
+      <e p=".gitignore" t="Include" />
       <e p="Config" t="Include">
         <e p="DefaultEditor.ini" t="Include" />
         <e p="DefaultEditorPerProjectUserSettings.ini" t="Include" />

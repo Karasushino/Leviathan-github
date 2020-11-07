@@ -162,12 +162,15 @@ float AxeReturnCurveScalar;
 UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "AxeSettings")
 float AxeThrowScalar = 250.f;
 //Speed of the axe throw
-
+bool StopAxeRotation = false;
 	
 	
 #pragma endregion
 	
-	UFUNCTION(SealedEvent, Category = "ThrowAxe")
+	UFUNCTION(BlueprintImplementableEvent, Category = "ThrowAxe")
+	void ThrowEvent();
+	UFUNCTION(BlueprintCallable,Category = "ThorwAxe")
 	void Throw();
+	void SpinAxe();
 
 };

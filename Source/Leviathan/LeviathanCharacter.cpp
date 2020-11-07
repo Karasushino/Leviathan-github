@@ -16,7 +16,10 @@ ALeviathanCharacter::ALeviathanCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
-
+	IdleCameraVector = FVector(10.0f,95.0f,20.0f);
+	AimCameraVector = FVector(10.0f,80.0f,18.0f);
+	AimSpringArmLength = 40.0f;
+	IdleSpringArmLength = 110.0f;
 	// set our turn rates for input
 	BaseTurnRate = NormalTurnRate;
 	BaseLookUpRate = 45.f;
@@ -123,26 +126,11 @@ void ALeviathanCharacter::Aim()
 
 void ALeviathanCharacter::LerpCameraPosition(float LerpCurve)
 {
-	float LerpedLength = FMath::Lerp(IdleSpringArmLength,AimSpringArmLength,LerpCurve);
+	CameraBoom->TargetArmLength = FMath::Lerp(IdleSpringArmLength,AimSpringArmLength,LerpCurve);
 	LerpedSocketOffset = FMath::Lerp(IdleCameraVector,AimCameraVector,LerpCurve);
-	CameraBoom->TargetArmLength = LerpedLength;
 	CameraBoom->SocketOffset = LerpedSocketOffset;
-	 
+	
 }
-
-void ALeviathanCharacter::ThrowAxe()
-{
-	if(!bAxeThrown && bAiming)
-	{
-		
-		LeviathanAxe->DetachFromActor(FDetachmentTransformRules(EDetachmentRule::KeepWorld,true));
-		//Throw the Axe
-		LeviathanAxe->Throw(FollowCamera->GetComponentRotation(),FollowCamera->GetForwardVector(),
-			FollowCamera->GetComponentLocation());
-		bAxeThrown = true;
-	}
-}
-
 
 void ALeviathanCharacter::TurnAtRate(float Rate)
 {

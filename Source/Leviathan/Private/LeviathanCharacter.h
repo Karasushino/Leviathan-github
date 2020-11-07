@@ -136,9 +136,6 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-	/** Throw axe function */
-	UFUNCTION(BlueprintCallable, Category = AxeThrow)
-    void ThrowAxe();
 	
 #pragma endregion 
 };

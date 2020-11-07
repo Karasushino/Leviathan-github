@@ -37,27 +37,27 @@ public:
 	float BaseTurnRate;
 
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(VisibleDefaultsOnly, Category=Camera)
 	float BaseLookUpRate;
 
 #pragma region Character Camera Variables
 	//Different Zooms when aimed and idle
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	float IdleSpringArmLength;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	float AimSpringArmLength;
 	//Different Camera Vector moves position of camera.
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	FVector IdleCameraVector;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	FVector AimCameraVector;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(VisibleDefaultsOnly, Category=Camera)
 	FVector LerpedSocketOffset;
 	/**The turn rate when aiming*/
-	UPROPERTY(VisibleAnywhere,Category=Camera)
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	float AimingCameraTurnRate = 30.f;
 	/**The turn rate when not aiming*/
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	float NormalTurnRate = 50.f;
 	
 	
@@ -65,9 +65,9 @@ public:
 
 #pragma region Movement Variables
 	//Change movement speed when aiming down.
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Movement)
+	UPROPERTY(VisibleDefaultsOnly , BlueprintReadOnly, Category=Movement,meta = (AllowPrivateAccess = "true"))
 	float AimWalkSpeed = 250.f;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Movement)
+	UPROPERTY(VisibleDefaultsOnly , BlueprintReadOnly, Category=Movement,meta = (AllowPrivateAccess = "true"))
 	float IdleWalkSpeed = 500.f;
 
 #pragma endregion 

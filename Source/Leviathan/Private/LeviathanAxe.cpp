@@ -1,9 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "LeviathanAxe.h"
 #include "LeviathanCharacter.h"
 #include "Camera/CameraComponent.h"
-#include "LeviathanAxe.h"
 #include "Components/SceneComponent.h"
 
 // Sets default values
@@ -74,10 +73,28 @@ void ALeviathanAxe::Throw()
 		MoveAxeToStartPosition();
 
 		
-		
-		
 		Player->bAxeThrown = true;
 	}
+}
+
+void ALeviathanAxe::SpinAxe()
+{
+	//Rotate the axe
+	float Current = 0.0;
+	const float Target = 1.f;
+
+	while (!StopAxeRotation)
+	{
+		//If its completely rotated restart the Lerp
+		if(Current == 1.f)
+			Current = 0.0f;
+		FMath::FInterpTo(Current,Target,GetWorld()->DeltaTimeSeconds, AxeSpinRate);
+		float RotationY = Current*-360.0f;
+		FRotator newRotator = FRotator(RotationY,CenterPoint->GetRelativeRotation().Yaw,
+			CenterPoint->GetRelativeRotation().Roll);
+		CenterPoint->SetRelativeRotation(newRotator);
+	}
+	
 }
 
 // Called every frame
@@ -103,10 +120,14 @@ void ALeviathanAxe::ProjectAxe()
 	ProjectileMovement->Velocity = ThrowDirection * ThrowSpeed;
 	//Activate Projectile movement
 	ProjectileMovement->Activate();
-	//Rotate the axe
-	float Current = 0.0;
-	float Target = 1.f;
-	FMath::FInterpTo(Current,Target,GetWorld()->DeltaTimeSeconds, AxeSpinRate);
-	
+	//Start Spin Axe
+	SpinAxe();
+	//Set enum to launched axe
+	AxeState = EAxeState::Launched;
+	//Start fancy particle effect trail
+	ThrowParticles->BeginTrails("BaseSocket","TipSocket",ETrailWidthMode_FromCentre
+		,1.0f);
+	//Remove gravity to simulate axe thrown very hard
+	ProjectileMovement->ProjectileGravityScale = 0.0f;
 	
 }
