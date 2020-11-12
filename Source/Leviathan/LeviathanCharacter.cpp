@@ -1,13 +1,13 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "LeviathanCharacter.h"
+
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Templates/Casts.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ALeviathanCharacter
@@ -18,8 +18,6 @@ ALeviathanCharacter::ALeviathanCharacter()
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 	IdleCameraVector = FVector(10.0f,95.0f,20.0f);
 	AimCameraVector = FVector(10.0f,80.0f,18.0f);
-	AimSpringArmLength = 40.0f;
-	IdleSpringArmLength = 110.0f;
 	// set our turn rates for input
 	BaseTurnRate = NormalTurnRate;
 	BaseLookUpRate = 45.f;
@@ -49,11 +47,12 @@ ALeviathanCharacter::ALeviathanCharacter()
 	//Create a child component for the axe.
 	LeviathanAxeChildActorComponent = CreateDefaultSubobject<UChildActorComponent>(TEXT("LeviathanAxe"));
 	LeviathanAxeChildActorComponent->SetupAttachment(GetMesh());
-	
-	
+	//Gets a reference of the Leviathan Axe from the child actor component (or atleast should)
+
 	
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+	
 }
 
 void ALeviathanCharacter::BeginPlay()
@@ -61,8 +60,12 @@ void ALeviathanCharacter::BeginPlay()
 	//Calls Parents Begin Play
 	Super::BeginPlay();
 	//Setup begin play here
-	//Gets a reference of the Leviathan Axe from the child actor component (or atleast should)
-	LeviathanAxe = Cast<ALeviathanAxe>(LeviathanAxeChildActorComponent);
+	//This solved a giggling effect when aiming and moving right or left;
+	GetMesh()->HideBoneByName(TEXT("hips_cloth_main_l"),EPhysBodyOp::PBO_None);
+	GetMesh()->HideBoneByName(TEXT("hips_cloth_main_r"),EPhysBodyOp::PBO_None);
+	LeviathanAxeChildActorComponent->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,
+		TEXT("RightHandWeaponBoneSocket"));
+	
 	//I need to get a reference of the Blueprint here
 }
 
@@ -102,12 +105,12 @@ void ALeviathanCharacter::Aim()
 		bAiming = true;
 		//Decrease Sens
 		BaseTurnRate = AimingCameraTurnRate;
+		GetCharacterMovement()->bOrientRotationToMovement = false;
+		bUseControllerRotationYaw = true;
 		//Need to add hud here
 		//Need to set ON ranged attack mode from animation blueprint
 		//Use controller rotation so player looks where he is aiming
-		bUseControllerRotationYaw = true;
-		
-		
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Yaw set to true"));
 		GetCharacterMovement()->MaxWalkSpeed = AimWalkSpeed;
 	}
 	//If not Aiming/Aim Released
@@ -116,9 +119,13 @@ void ALeviathanCharacter::Aim()
 		bAiming = false;
 		//Restore
 		BaseTurnRate = NormalTurnRate;
+		GetCharacterMovement()->bOrientRotationToMovement = true;
+		bUseControllerRotationYaw = false;
 		//Need to hide HUD here
 		//Need to set OFF ranged attack mode from animation blueprint
-		bUseControllerRotationYaw = false;
+		
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Yaw set to false"));
+
 		GetCharacterMovement()->MaxWalkSpeed = IdleWalkSpeed;
 
 	}
@@ -172,3 +179,5 @@ void ALeviathanCharacter::MoveRight(float Value)
 		AddMovementInput(Direction, Value);
 	}
 }
+
+

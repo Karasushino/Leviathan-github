@@ -59,9 +59,11 @@ void ALeviathanAxe::BeginPlay()
 
 void ALeviathanAxe::Throw()
 {
+	
 	//Only execute if player was aiming and the axe was not thrown already
 	if(!Player->bAxeThrown && Player->bAiming)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Throw was called"));
 		//Detach the Axe from the player
 		this->DetachFromActor(FDetachmentTransformRules(EDetachmentRule::KeepWorld,true));
 		//Get all Data for maths
@@ -70,7 +72,7 @@ void ALeviathanAxe::Throw()
 		ThrowCameraLocation = Player->FollowCamera->GetComponentLocation();
 		ThrowSpeed = 2500.f;
 
-		MoveAxeToStartPosition();
+		//MoveAxeToStartPosition();
 
 		
 		Player->bAxeThrown = true;

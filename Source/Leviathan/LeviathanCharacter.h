@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "LeviathanAxe.h"
 #include "LeviathanCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -19,18 +18,15 @@ class ALeviathanCharacter : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
-	
+
 	
 public:
 	ALeviathanCharacter();
-	//Get a pointer to the Axe in the world.
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Axe)
-	class ALeviathanAxe* LeviathanAxe;
 	//Possibly will need a reference to the HUD later on here
 	//Imaginary hud ref
 	
 	/** Axe Child Object */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Axe)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Axe)
 	class UChildActorComponent* LeviathanAxeChildActorComponent;
 	
 	/** Turn rate variable that will be passed to the camera for processing */
@@ -42,24 +38,24 @@ public:
 
 #pragma region Character Camera Variables
 	//Different Zooms when aimed and idle
-	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category=Camera)
-	float IdleSpringArmLength;
-	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
-	float AimSpringArmLength;
+	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
+	float IdleSpringArmLength = 110.0f;
+	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
+	float AimSpringArmLength = 40.0f;
 	//Different Camera Vector moves position of camera.
-	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	FVector IdleCameraVector;
-	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	FVector AimCameraVector;
 	UPROPERTY(VisibleDefaultsOnly, Category=Camera)
 	FVector LerpedSocketOffset;
 	/**The turn rate when aiming*/
-	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
+	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	float AimingCameraTurnRate = 30.f;
 	/**The turn rate when not aiming*/
-	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
+	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	float NormalTurnRate = 50.f;
-	
+
 	
 #pragma endregion
 
@@ -86,6 +82,7 @@ protected:
 	/** Called for side to side input */
 	void MoveRight(float Value);
 
+	
 	/** 
 	 * Called via input to turn at a given rate. 
 	 * @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
@@ -134,9 +131,6 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-	/** Throw axe function */
-	UFUNCTION(BlueprintCallable, Category = AxeThrow)
-    void ThrowAxe();
 	
 #pragma endregion 
 };

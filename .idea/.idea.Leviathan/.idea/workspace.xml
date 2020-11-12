@@ -26,14 +26,15 @@
     <list default="true" id="b219e613-7107-477c-9915-564e33bd51eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyLeviathanCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyLeviathanCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/MyLeviathanAxe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/MyLeviathanAxe.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyLeviathanCharacter.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/GameModeAxe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/GameModeAxe.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/Gideon_AnimBP.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/MyLeviathanAxe.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,17 +45,23 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/um/winioctl.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/winrt/wrl/wrappers/corewrappers.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/um/DirectXMath.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/Public/CLeviathanCharacter.h" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/Private/CLeviathanCharacter.cpp" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" />
-        <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" />
       </list>
     </option>
   </component>
@@ -304,13 +311,33 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="776" y="381" key="#Notifications/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1603570818256" />
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1604935736656">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
+    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1604935736656">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
+    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1604935736656">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
+    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1604935736656">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
+    <state x="951" y="275" key="RiderGenerateDialog" timestamp="1605120460799">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="951" y="275" key="RiderGenerateDialog/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605120460799" />
     <state x="486" y="171" width="1153" height="709" key="SettingsEditor" timestamp="1603572159388">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="486" y="171" width="1153" height="709" key="SettingsEditor/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1603572159388" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1603573972363">
+    <state x="749" y="214" width="672" height="678" key="search.everywhere.popup" timestamp="1605099050077">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1603573972363" />
+    <state x="749" y="214" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605099050077" />
   </component>
 </project>

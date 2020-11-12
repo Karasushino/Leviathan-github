@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "LeviathanAxe.h"
 #include "LeviathanCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -13,7 +12,7 @@ class ALeviathanCharacter : public ACharacter
 	GENERATED_BODY()
 
 	/** Camera boom positioning the camera behind the character */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 
 	
@@ -22,44 +21,40 @@ class ALeviathanCharacter : public ACharacter
 public:
 	ALeviathanCharacter();
 	//Get a pointer to the Axe in the world.
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Axe)
-	class ALeviathanAxe* LeviathanAxe;
 	//Possibly will need a reference to the HUD later on here
 	//Imaginary hud ref
-
 	/** Follow camera */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 	
 	/** Axe Child Object */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Axe)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Helicopter, meta = (AllowPrivateAccess = "true"))
 	class UChildActorComponent* LeviathanAxeChildActorComponent;
 	
 	/** Turn rate variable that will be passed to the camera for processing */
 	float BaseTurnRate;
-
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
-
+	
 #pragma region Character Camera Variables
 	//Different Zooms when aimed and idle
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Camera)
 	float IdleSpringArmLength;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Camera)
 	float AimSpringArmLength;
 	//Different Camera Vector moves position of camera.
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Camera)
 	FVector IdleCameraVector;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Camera)
 	FVector AimCameraVector;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	FVector LerpedSocketOffset;
 	/**The turn rate when aiming*/
-	UPROPERTY(VisibleAnywhere,Category=Camera)
+	UPROPERTY(EditAnywhere,Category=Camera)
 	float AimingCameraTurnRate = 30.f;
 	/**The turn rate when not aiming*/
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Camera)
 	float NormalTurnRate = 50.f;
 	
 	
