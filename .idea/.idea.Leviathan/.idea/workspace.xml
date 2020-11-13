@@ -9,28 +9,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b219e613-7107-477c-9915-564e33bd51eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Axe/LeviathanAxe_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Axe/LeviathanAxe_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Character/LeviathanCharacter_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Character/LeviathanCharacter_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan.Target.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Leviathan.Build.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Leviathan.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Leviathan.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanGameMode.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanGameMode.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/CLeviathanCharacter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/CLeviathanCharacter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanCharacter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/LeviathanEditor.Target.cs" beforeDir="false" />
-    </list>
+    <list default="true" id="b219e613-7107-477c-9915-564e33bd51eb" name="Default Changelist" comment="Major Refactoring of project structure." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -356,6 +335,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Major Refactoring of project structure." />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Refactoring of project structure." />
   </component>
   <component name="WindowStateProjectService">
     <state x="776" y="381" key="#Notifications" timestamp="1603570818256">
@@ -438,10 +419,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="486" y="171" width="1153" height="709" key="SettingsEditor/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1603572159388" />
-    <state x="671" y="269" key="Vcs.Push.Dialog.v2" timestamp="1605292720262">
+    <state x="671" y="269" key="Vcs.Push.Dialog.v2" timestamp="1605292762767">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="671" y="269" key="Vcs.Push.Dialog.v2/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292720262" />
+    <state x="671" y="269" key="Vcs.Push.Dialog.v2/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292762767" />
     <state x="749" y="214" width="672" height="678" key="search.everywhere.popup" timestamp="1605291707160">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
