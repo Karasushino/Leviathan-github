@@ -174,6 +174,10 @@ bool StopAxeRotation = false;
 	void Throw();
 	UFUNCTION(BlueprintCallable,Category = "ThorwAxe")
 	void SpinAxe(float RotateScalar);
-	
 
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "SpinAxe")
+	void StartSpinAxe();
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "SpinAxe")
+    void StopSpinAxe();
+	
 };

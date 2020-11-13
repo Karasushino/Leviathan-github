@@ -9,7 +9,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b219e613-7107-477c-9915-564e33bd51eb" name="Default Changelist" comment="Major Refactoring of project structure." />
+    <list default="true" id="b219e613-7107-477c-9915-564e33bd51eb" name="Default Changelist" comment="Major Refactoring of project structure.">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Axe/LeviathanAxe_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Axe/LeviathanAxe_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Character/LeviathanCharacter_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Character/LeviathanCharacter_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,11 +35,11 @@
         <option value="$PROJECT_DIR$/Source/Leviathan/Public/CLeviathanCharacter.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Private/CLeviathanCharacter.cpp" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" />
-        <option value="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" />
         <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanCharacter.h" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" />
       </list>
     </option>
   </component>
@@ -347,22 +353,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="533" y="193" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605286852212" />
-    <state width="1634" height="265" key="GridCell.Tab.0.bottom" timestamp="1605292404331">
+    <state width="1636" height="283" key="GridCell.Tab.0.bottom" timestamp="1605295035152">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="1634" height="265" key="GridCell.Tab.0.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
-    <state width="1634" height="265" key="GridCell.Tab.0.center" timestamp="1605292404331">
+    <state width="1636" height="283" key="GridCell.Tab.0.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605295035152" />
+    <state width="1636" height="283" key="GridCell.Tab.0.center" timestamp="1605295035152">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="1634" height="265" key="GridCell.Tab.0.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
-    <state width="1634" height="265" key="GridCell.Tab.0.left" timestamp="1605292404331">
+    <state width="1636" height="283" key="GridCell.Tab.0.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605295035152" />
+    <state width="1636" height="283" key="GridCell.Tab.0.left" timestamp="1605295035152">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="1634" height="265" key="GridCell.Tab.0.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
-    <state width="1634" height="265" key="GridCell.Tab.0.right" timestamp="1605292404331">
+    <state width="1636" height="283" key="GridCell.Tab.0.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605295035152" />
+    <state width="1636" height="283" key="GridCell.Tab.0.right" timestamp="1605295035152">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="1634" height="265" key="GridCell.Tab.0.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
+    <state width="1636" height="283" key="GridCell.Tab.0.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605295035152" />
     <state width="1636" height="356" key="GridCell.Tab.1.bottom" timestamp="1605287674497">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

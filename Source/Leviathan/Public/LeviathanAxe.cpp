@@ -76,7 +76,7 @@ void ALeviathanAxe::Throw()
 		
 		MoveAxeToStartPosition();
 		ProjectAxe();
-		
+		StartSpinAxe();
 		Player->bAxeThrown = true;
 	}
 }
