@@ -5,36 +5,31 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b219e613-7107-477c-9915-564e33bd51eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Leviathan/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyLeviathanCharacter.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/GameModeAxe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/GameModeAxe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/Gideon_AnimBP.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Blueprints/MyLeviathanAxe.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Axe/LeviathanAxe_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Axe/LeviathanAxe_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Character/LeviathanCharacter_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Character/LeviathanCharacter_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan.Target.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Leviathan.Build.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Leviathan.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Leviathan.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanGameMode.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/LeviathanGameMode.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/CLeviathanCharacter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/CLeviathanCharacter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanCharacter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/LeviathanEditor.Target.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,11 +40,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/um/winioctl.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/winrt/wrl/wrappers/corewrappers.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/um/DirectXMath.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -57,11 +49,12 @@
       <list>
         <option value="$PROJECT_DIR$/Source/Leviathan/Public/CLeviathanCharacter.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Private/CLeviathanCharacter.cpp" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanAxe.h" />
         <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanAxe.cpp" />
-        <option value="$PROJECT_DIR$/Source/Leviathan/Private/LeviathanCharacter.h" />
-        <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" />
         <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.h" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/LeviathanCharacter.cpp" />
+        <option value="$PROJECT_DIR$/Source/Leviathan/Public/LeviathanCharacter.h" />
       </list>
     </option>
   </component>
@@ -73,6 +66,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35015577" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30031154" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -294,11 +289,67 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:Z:/Game Dev/Year 3 UNI/302 Mechanic/Leviathan/Source/Leviathan/Private" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
           </value>
         </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+        <entry key="2" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
@@ -311,22 +362,74 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="776" y="381" key="#Notifications/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1603570818256" />
-    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1604935736656">
+    <state x="533" y="193" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605286852212">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
-    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1604935736656">
+    <state x="533" y="193" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605286852212" />
+    <state width="1634" height="265" key="GridCell.Tab.0.bottom" timestamp="1605292404331">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
-    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1604935736656">
+    <state width="1634" height="265" key="GridCell.Tab.0.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
+    <state width="1634" height="265" key="GridCell.Tab.0.center" timestamp="1605292404331">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
-    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1604935736656">
+    <state width="1634" height="265" key="GridCell.Tab.0.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
+    <state width="1634" height="265" key="GridCell.Tab.0.left" timestamp="1605292404331">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1604935736656" />
+    <state width="1634" height="265" key="GridCell.Tab.0.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
+    <state width="1634" height="265" key="GridCell.Tab.0.right" timestamp="1605292404331">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1634" height="265" key="GridCell.Tab.0.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292404331" />
+    <state width="1636" height="356" key="GridCell.Tab.1.bottom" timestamp="1605287674497">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.1.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674497" />
+    <state width="1636" height="356" key="GridCell.Tab.1.center" timestamp="1605287674497">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.1.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674497" />
+    <state width="1636" height="356" key="GridCell.Tab.1.left" timestamp="1605287674497">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.1.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674497" />
+    <state width="1636" height="356" key="GridCell.Tab.1.right" timestamp="1605287674497">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.1.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674497" />
+    <state width="1636" height="356" key="GridCell.Tab.2.bottom" timestamp="1605287674498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.2.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674498" />
+    <state width="1636" height="356" key="GridCell.Tab.2.center" timestamp="1605287674498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.2.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674498" />
+    <state width="1636" height="356" key="GridCell.Tab.2.left" timestamp="1605287674497">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.2.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674497" />
+    <state width="1636" height="356" key="GridCell.Tab.2.right" timestamp="1605287674498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.2.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674498" />
+    <state width="1636" height="356" key="GridCell.Tab.3.bottom" timestamp="1605287674498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.3.bottom/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674498" />
+    <state width="1636" height="356" key="GridCell.Tab.3.center" timestamp="1605287674498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.3.center/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674498" />
+    <state width="1636" height="356" key="GridCell.Tab.3.left" timestamp="1605287674498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.3.left/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674498" />
+    <state width="1636" height="356" key="GridCell.Tab.3.right" timestamp="1605287674498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1636" height="356" key="GridCell.Tab.3.right/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605287674498" />
     <state x="951" y="275" key="RiderGenerateDialog" timestamp="1605120460799">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -335,9 +438,13 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="486" y="171" width="1153" height="709" key="SettingsEditor/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1603572159388" />
-    <state x="749" y="214" width="672" height="678" key="search.everywhere.popup" timestamp="1605099050077">
+    <state x="671" y="269" key="Vcs.Push.Dialog.v2" timestamp="1605292720262">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="749" y="214" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605099050077" />
+    <state x="671" y="269" key="Vcs.Push.Dialog.v2/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605292720262" />
+    <state x="749" y="214" width="672" height="678" key="search.everywhere.popup" timestamp="1605291707160">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="749" y="214" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/-1920.0.1920.1160@0.0.2048.1112" timestamp="1605291707160" />
   </component>
 </project>

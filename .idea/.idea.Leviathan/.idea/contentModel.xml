@@ -43567,18 +43567,13 @@
           <e p="Leviathan.Build.cs" t="Include" />
           <e p="Leviathan.cpp" t="Include" />
           <e p="Leviathan.h" t="Include" />
-          <e p="LeviathanCharacter.cpp" t="Include" />
-          <e p="LeviathanCharacter.h" t="Include" />
           <e p="LeviathanGameMode.cpp" t="Include" />
           <e p="LeviathanGameMode.h" t="Include" />
-          <e p="Private" t="Include">
-            <e p="CLeviathanCharacter.cpp" t="Include" />
-            <e p="LeviathanAxe.cpp" t="Include" />
-            <e p="LeviathanCharacter.h" t="Include" />
-          </e>
+          <e p="Private" t="Include" />
           <e p="Public" t="Include">
-            <e p="CLeviathanCharacter.h" t="Include" />
+            <e p="LeviathanAxe.cpp" t="Include" />
             <e p="LeviathanAxe.h" t="Include" />
+            <e p="LeviathanCharacter.cpp" t="Include" />
             <e p="LeviathanCharacter.h" t="Include" />
           </e>
         </e>
