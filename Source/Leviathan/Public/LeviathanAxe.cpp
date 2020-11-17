@@ -1,9 +1,13 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "LeviathanAxe.h"
+
+#include "DrawDebugHelpers.h"
 #include "LeviathanCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Components/SceneComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 ALeviathanAxe::ALeviathanAxe()
@@ -53,8 +57,6 @@ void ALeviathanAxe::BeginPlay()
 {
 	Super::BeginPlay();
 	Player = Cast<ALeviathanCharacter>(GetWorld()->GetFirstPlayerController()->GetCharacter());
-	Current = 0.0f;
-
 }
 
 
@@ -78,6 +80,8 @@ void ALeviathanAxe::Throw()
 		ProjectAxe();
 		StartSpinAxe();
 		Player->bAxeThrown = true;
+
+		
 	}
 }
 
@@ -88,6 +92,110 @@ void ALeviathanAxe::SpinAxe(float RotateScalar)
 	FRotator newRotator = FRotator(RotationY,0.f,0.f);
 	CenterPoint->SetRelativeRotation(newRotator);
 			
+}
+
+void ALeviathanAxe::StopAxeMovement()
+{
+	ThrowParticles->EndTrails();
+	StopAxeTracing();
+	ProjectileMovement->Deactivate();
+}
+
+void ALeviathanAxe::LodgeAxe(USoundBase* Sound,USoundBase* Sound2, USoundAttenuation* SoundAttenuation)
+{
+	//Play Sound (Arrays cannot be used as function parameters, this is why its like this)
+	
+		UGameplayStatics::SpawnSoundAtLocation(GetWorld(),Sound,ImpactLocation,FRotator(0,0,0),
+        1,1,0,SoundAttenuation);
+		UGameplayStatics::SpawnSoundAtLocation(GetWorld(),Sound2,ImpactLocation,FRotator(0,0,0),
+        1,1,0,SoundAttenuation);
+	
+	StopAxeMovement();
+	StopSpinAxe();
+	
+	CenterPoint->SetRelativeRotation(FRotator(0.0f,0.0f,0.0f));
+	SetActorRotation(ThrowCameraRotator);
+	
+	//Generate a random offset rotation when lodging the axe (more realistic touch)
+	float Roll = FMath::FRandRange(-3.0,-8.0);
+	FRotator Rotator = FRotator(CalculateImpactPitchOffset(),0.0f,Roll);
+
+	//Set the Randomized Rotation of the axe
+	LodgePoint->SetRelativeRotation(Rotator);
+
+	
+ 
+	//Adjust the impact location
+	SetActorLocation(CalculateImpactLocation());
+	//set the corresponding axe state
+	AxeState = EAxeState::Lodged;
+	
+	
+}
+
+float ALeviathanAxe::CalculateImpactPitchOffset()
+{
+	float InclinedSurfaceOffset = FMath::FRandRange(-30.0,-55.0);
+	float FlatSurfaceOffset = FMath::FRandRange(-5.0f,-25.0f);
+	FRotator Rotator = UKismetMathLibrary::MakeRotationFromAxes(ImpactNormal,FVector(0),FVector(0));
+
+	//If its flat surface
+	if(Rotator.Pitch > 0.0f)
+	{
+		return FlatSurfaceOffset - Rotator.Pitch;
+	}
+	return InclinedSurfaceOffset - Rotator.Pitch;
+
+}
+
+FVector ALeviathanAxe::CalculateImpactLocation()
+{
+	FRotator Rotator = UKismetMathLibrary::MakeRotationFromAxes(ImpactNormal,FVector(0,0,0),FVector(0,0,0));
+	//If its flat surface
+	if(Rotator.Pitch > 0.0f)
+	{
+		//Should make sure that the axe blade is facing the object that has impacted with
+		AxeZ_Offset = (((90.f - Rotator.Pitch) / 90.f) *10.f);
+		FVector CalculatedLocation = ImpactLocation + FVector(0,0,AxeZ_Offset);
+		CalculatedLocation += GetActorLocation()-LodgePoint->GetComponentLocation();
+		
+		return CalculatedLocation;
+	}
+
+	//If pitch is not bigger than 0 then set to 0 and calculate
+        AxeZ_Offset = 10.f;
+		FVector CalculatedLocation = ImpactLocation + FVector(0,0,AxeZ_Offset);
+		CalculatedLocation += GetActorLocation()-LodgePoint->GetComponentLocation();
+		
+		return CalculatedLocation;
+	
+	
+	
+}
+
+bool ALeviathanAxe::ChangeGravityAndHit(float gravity)
+{
+
+	
+	ProjectileMovement->ProjectileGravityScale = gravity;
+	
+	FVector Start = GetActorLocation()+FVector(0,0,41);
+	FVector End = GetActorLocation()+FVector(0,0,41) + (GetActorRotation().Vector() * AxeTraceDistance);
+	GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
+
+	DrawDebugLine(GetWorld(),Start, End,FColor(255, 0, 0),false,
+        7, 0,5);
+
+	
+	if(HitResult.bBlockingHit)
+	{
+		ImpactLocation = HitResult.ImpactPoint;
+		ImpactNormal = HitResult.ImpactNormal;
+		ESurfaceHit = UGameplayStatics::GetSurfaceType(HitResult);
+		StopAxeTracing();
+		return HitResult.bBlockingHit;
+	}
+	return HitResult.bBlockingHit;
 }
 
 

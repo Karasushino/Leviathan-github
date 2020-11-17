@@ -118,9 +118,18 @@ float ReturnSpeed;
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 FVector ImpactNormal;
 //Stores the Bone name of where the impact happened, out of the Break Hit Result node.
-UPROPERTY(BlueprintReadWrite, EditAnywhere)
+UPROPERTY(BlueprintReadWrite)
 FName BoneHitName;
-	
+UPROPERTY(EditDefaultsOnly)
+float AxeTraceDistance = 60.f;
+//Store the hit result of the linetracebychannel
+UPROPERTY(BlueprintReadOnly)
+FHitResult HitResult;
+UPROPERTY(BlueprintReadOnly)
+TEnumAsByte<EPhysicalSurface> ESurfaceHit;
+UPROPERTY(BlueprintReadOnly)
+bool bHitBlocked;
+
 //Used for tracing the path back using (SphereTraceByChannel)
 //Vector for the Target Location (Axe Location Last Tick)
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
@@ -167,17 +176,31 @@ bool StopAxeRotation = false;
 	
 	
 #pragma endregion
-	float Current = 0.0;
+
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "ThrowAxe")
 	void ThrowEvent();
-	UFUNCTION(BlueprintCallable,Category = "ThorwAxe")
+	UFUNCTION(BlueprintCallable,Category = "ThrowAxe")
 	void Throw();
-	UFUNCTION(BlueprintCallable,Category = "ThorwAxe")
+	UFUNCTION(BlueprintCallable,Category = "ThrowAxe")
 	void SpinAxe(float RotateScalar);
+	UFUNCTION(BlueprintCallable, Category = "ThrowAxe")
+    void StopAxeMovement();
+	UFUNCTION(BlueprintCallable, Category = "ThrowAxe")
+    void LodgeAxe(USoundBase* SoundAsset,USoundBase* SoundAsset2,USoundAttenuation* AttenuationAsset);
 
+	//All adjustments for polish and make the axe sticking to surfaces more realistic
+	float CalculateImpactPitchOffset();
+	FVector CalculateImpactLocation();
+
+	
+	UFUNCTION(BlueprintCallable,Category="ThrowAxe")
+	bool ChangeGravityAndHit(float gravity);
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "SpinAxe")
 	void StartSpinAxe();
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "SpinAxe")
     void StopSpinAxe();
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "TraceAxe")
+    void StopAxeTracing();
 	
 };
