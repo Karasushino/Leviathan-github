@@ -9,6 +9,10 @@
 #include "Particles/ParticleSystemComponent.h"
 #include "LeviathanAxe.generated.h"
 
+//Enum for output pins
+UENUM(BlueprintType)
+enum class ESetupEnum : uint8 {Launched,Lodged};
+
 
 UENUM()
 enum class EAxeState {Idle,Launched,Lodged,Returning };
@@ -173,13 +177,24 @@ float AxeThrowScalar = 250.f;
 //Speed of the axe throw
 UPROPERTY(BlueprintReadWrite, Category = "AxeSettings")
 bool StopAxeRotation = false;
+
+//Store the randomized roll rotation when axe is thrown.
+float RandomRollThrow = 0.0f;
+//Store the Base Lodged Rotator to use on Wiggle
+FRotator BaseLodgedRotator;
+//Wiggle Strength (Parameter used to multiply the timeline output value, therefore changing the rotation value)
+UPROPERTY(EditAnywhere)
+float WiggleStrength = 12.f;
 	
-	
+//Store a reference to the sound the axe makes when returning, to be able to edit it later.	
+UAudioComponent* ReturnSound_Ref;
 #pragma endregion
 
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "ThrowAxe")
 	void ThrowEvent();
+	UFUNCTION(BlueprintImplementableEvent, Category = "RecallAxe")
+    void RecallEvent();
 	UFUNCTION(BlueprintCallable,Category = "ThrowAxe")
 	void Throw();
 	UFUNCTION(BlueprintCallable,Category = "ThrowAxe")
@@ -187,7 +202,21 @@ bool StopAxeRotation = false;
 	UFUNCTION(BlueprintCallable, Category = "ThrowAxe")
     void StopAxeMovement();
 	UFUNCTION(BlueprintCallable, Category = "ThrowAxe")
+	void TimeoutTrace();
+	UFUNCTION(BlueprintCallable, Category = "ThrowAxe")
     void LodgeAxe(USoundBase* SoundAsset,USoundBase* SoundAsset2,USoundAttenuation* AttenuationAsset);
+
+	UFUNCTION(BlueprintCallable, Category = "ReturnAxe", Meta = (ExpandEnumAsExecs="OutputPin"))
+	void SetupWiggleReturn(USoundBase* SoundAsset,USoundAttenuation* SoundAttenuation,ESetupEnum& OutputPin);
+	UFUNCTION(BlueprintCallable, Category = "ReturnAxe")
+        void WiggleAxe(float Rotation);
+	
+	UFUNCTION(BlueprintCallable, Category = "ParticlesAxe")
+        void StartParticleTrail();
+	
+	
+	
+	
 
 	//All adjustments for polish and make the axe sticking to surfaces more realistic
 	float CalculateImpactPitchOffset();
@@ -202,5 +231,7 @@ bool StopAxeRotation = false;
     void StopSpinAxe();
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "TraceAxe")
     void StopAxeTracing();
+	
+	
 	
 };

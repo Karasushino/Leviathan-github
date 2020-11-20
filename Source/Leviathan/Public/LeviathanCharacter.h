@@ -110,6 +110,8 @@ protected:
 	
 	UFUNCTION(BlueprintPure) bool CanThrowAxe() const;
 
+	UFUNCTION(BlueprintPure) bool CanRecallAxe() const;
+
 	
 protected:	
 	// APawn interface
@@ -124,6 +126,10 @@ public:
 	//Boolean to keep track to see if the player has thrown the axe already or not
 	UPROPERTY(BlueprintReadWrite,Category = "AxeThrow")
 	bool bAxeThrown = false;
+
+	//Boolean to keep track to see if the player has called recall axe
+	UPROPERTY(BlueprintReadWrite,Category = "AxeThrow")
+	bool bAxeRecalled = false;
 	
 #pragma region Camera Components
 	/** Returns CameraBoom subobject **/

@@ -113,9 +113,9 @@ void ALeviathanCharacter::Aim()
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Yaw set to true"));
 		GetCharacterMovement()->MaxWalkSpeed = AimWalkSpeed;
 	}
-	//If not Aiming/Aim Released
 	else
 	{
+		//If not Aiming/Aim Released
 		bAiming = false;
 		//Restore
 		BaseTurnRate = NormalTurnRate;
@@ -129,6 +129,8 @@ void ALeviathanCharacter::Aim()
 		GetCharacterMovement()->MaxWalkSpeed = IdleWalkSpeed;
 
 	}
+	
+	
 }
 
 void ALeviathanCharacter::LerpCameraPosition(float LerpCurve)
@@ -185,5 +187,12 @@ bool ALeviathanCharacter::CanThrowAxe() const
 {
 	 if(bAiming&&!bAxeThrown)
 	 	return true;
+	return false;
+}
+
+bool ALeviathanCharacter::CanRecallAxe() const
+{
+	if(bAxeThrown&&!bAxeRecalled)
+		return true;
 	return false;
 }

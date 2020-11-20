@@ -81,7 +81,6 @@ void ALeviathanAxe::Throw()
 		StartSpinAxe();
 		Player->bAxeThrown = true;
 
-		
 	}
 }
 
@@ -101,6 +100,12 @@ void ALeviathanAxe::StopAxeMovement()
 	ProjectileMovement->Deactivate();
 }
 
+void ALeviathanAxe::TimeoutTrace()
+{
+	StopAxeMovement();
+	AxeMesh->SetVisibility(false);
+}
+
 void ALeviathanAxe::LodgeAxe(USoundBase* Sound,USoundBase* Sound2, USoundAttenuation* SoundAttenuation)
 {
 	//Play Sound (Arrays cannot be used as function parameters, this is why its like this)
@@ -116,12 +121,11 @@ void ALeviathanAxe::LodgeAxe(USoundBase* Sound,USoundBase* Sound2, USoundAttenua
 	CenterPoint->SetRelativeRotation(FRotator(0.0f,0.0f,0.0f));
 	SetActorRotation(ThrowCameraRotator);
 	
-	//Generate a random offset rotation when lodging the axe (more realistic touch)
-	float Roll = FMath::FRandRange(-3.0,-8.0);
-	FRotator Rotator = FRotator(CalculateImpactPitchOffset(),0.0f,Roll);
-
-	//Set the Randomized Rotation of the axe
-	LodgePoint->SetRelativeRotation(Rotator);
+	//Make sure the lodge point is not reset 
+	// FRotator Rotator = FRotator(CalculateImpactPitchOffset(),0.0f,RandomRollThrow);
+	//
+	// //Set the Randomized Rotation of the axe
+	// LodgePoint->SetRelativeRotation(Rotator);
 
 	
  
@@ -130,7 +134,42 @@ void ALeviathanAxe::LodgeAxe(USoundBase* Sound,USoundBase* Sound2, USoundAttenua
 	//set the corresponding axe state
 	AxeState = EAxeState::Lodged;
 	
+}
+
+void ALeviathanAxe::SetupWiggleReturn(USoundBase* SoundAsset,USoundAttenuation* SoundAttenuation, ESetupEnum& OutputPin)
+{
+	//Player->bAxeRecalled = true;
+	StopAxeTracing();
+	AxeMesh->SetVisibility(true);
+	ReturnSound_Ref = UGameplayStatics::SpawnSoundAttached(SoundAsset,AxeMesh,"",FVector(0,0,0),
+		FRotator(0,0,0),EAttachLocation::SnapToTarget,false,
+		0.0f,1.0f,0.0f,SoundAttenuation);
 	
+	//
+	switch (AxeState)
+	{
+		case EAxeState::Launched:
+			AxeZ_Offset = 10.f;
+		//Set to execute this pin
+		OutputPin = ESetupEnum::Launched;
+		AxeState = EAxeState::Returning;
+			break;
+		case EAxeState::Lodged:
+			//Setup output pin for calling wiggle function
+			OutputPin = ESetupEnum::Lodged;
+			break;
+			
+	}
+	
+}
+
+void ALeviathanAxe::WiggleAxe(float Rotation)
+{
+	//Get the Rotation of the Lodged Axe
+	FRotator BaseRotator = BaseLodgedRotator;
+	//Change rotation based on the timeline * the value of strength.
+	BaseRotator.Roll += WiggleStrength*Rotation;
+	LodgePoint->SetRelativeRotation(BaseRotator);
 }
 
 float ALeviathanAxe::CalculateImpactPitchOffset()
@@ -198,6 +237,14 @@ bool ALeviathanAxe::ChangeGravityAndHit(float gravity)
 	return HitResult.bBlockingHit;
 }
 
+void ALeviathanAxe::StartParticleTrail()
+{
+	ThrowParticles->BeginTrails(TEXT("BaseSocket"),TEXT("TipSocket"),
+		ETrailWidthMode_FromCentre,1.0);
+	//At this stage the Axe is finished wiggling and is returning
+	AxeState = EAxeState::Returning;
+}
+
 
 // Called every frame
 void ALeviathanAxe::Tick(float DeltaTime)
@@ -214,6 +261,17 @@ void ALeviathanAxe::MoveAxeToStartPosition()
 	FVector CalculatedLocation = ((ThrowDirection*AxeThrowScalar) + ThrowCameraLocation)
 	- CenterPoint->GetRelativeLocation();
 	this->SetActorLocationAndRotation(CalculatedLocation,ThrowCameraRotator);
+
+	//Generate a random offset rotation when lodging the axe (more realistic touch)
+	RandomRollThrow = FMath::FRandRange(5.0,-5.0);
+	FRotator Rotator = FRotator(CalculateImpactPitchOffset(),0.0f,RandomRollThrow);
+
+	//Set the Randomized Rotation of the axe
+	LodgePoint->SetRelativeRotation(Rotator);
+	//Store the rotator for later on.
+	BaseLodgedRotator = Rotator;
+
+	
 }
 
 void ALeviathanAxe::ProjectAxe()
