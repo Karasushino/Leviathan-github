@@ -163,6 +163,24 @@ void ALeviathanAxe::SetupWiggleReturn(USoundBase* SoundAsset,USoundAttenuation* 
 	
 }
 
+void ALeviathanAxe::SetupTimelineReturn()
+{
+	//Get the difference between the Axe and the socket of the player mesh.
+	FVector LocationVector = FVector(GetActorLocation() - Player->GetMesh()->GetSocketLocation(TEXT("AxeSocket")));
+	//Clamp the distance so its not too far and convert to a float.
+	float Distance = FMath::Clamp(LocationVector.Size(),0.0f,MaxDistanceCalculation);
+	//Store for calculations later
+	DistanceFromCharacter = Distance;
+	//Prevents the axe traveling under ground by rising it up.
+	PreventClippingOnReturn();
+	//Setup al variables here
+	InitialLocation = GetActorLocation();
+	InitialRotator = GetActorRotation();
+	ThrowCameraRotator = Player->FollowCamera->GetComponentRotation();
+	//Return Lodge Point rotation to normal for smoothly bringing the axe back
+	LodgePoint->SetRelativeRotation(FRotator(0,0,0));
+}
+
 void ALeviathanAxe::WiggleAxe(float Rotation)
 {
 	//Get the Rotation of the Lodged Axe
@@ -170,6 +188,18 @@ void ALeviathanAxe::WiggleAxe(float Rotation)
 	//Change rotation based on the timeline * the value of strength.
 	BaseRotator.Roll += WiggleStrength*Rotation;
 	LodgePoint->SetRelativeRotation(BaseRotator);
+}
+
+const float ALeviathanAxe::ReturnTimelineSpeed()
+{
+	float TimelineSpeed = 0.0f;
+	TimelineSpeed = ReturnTimelineIdealDistance*ReturnSpeed;
+	//Get the ratio based on the distance from the character
+	TimelineSpeed /= DistanceFromCharacter;
+	//Clamp the value for polish
+	FMath::Clamp(TimelineSpeed,0.4f,7.5f);
+	
+	return TimelineSpeed;
 }
 
 float ALeviathanAxe::CalculateImpactPitchOffset()
@@ -212,6 +242,14 @@ FVector ALeviathanAxe::CalculateImpactLocation()
 	
 }
 
+void ALeviathanAxe::PreventClippingOnReturn()
+{
+	//Rise the axe byt AxeZReturnOffset.
+	FVector AdjustedLocation = GetActorLocation();
+	AdjustedLocation.Z += AxeZReturnOffset;
+	SetActorLocation(AdjustedLocation);
+}
+
 bool ALeviathanAxe::ChangeGravityAndHit(float gravity)
 {
 
@@ -244,6 +282,8 @@ void ALeviathanAxe::StartParticleTrail()
 	//At this stage the Axe is finished wiggling and is returning
 	AxeState = EAxeState::Returning;
 }
+
+
 
 
 // Called every frame

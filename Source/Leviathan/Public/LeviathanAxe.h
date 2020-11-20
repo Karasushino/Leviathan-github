@@ -70,15 +70,17 @@ public:
 
 	
 #pragma region Axe Variables
-//Distance from Player (Axe from player)
+//Distance from Player (Axe from player) when recalled
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 float DistanceFromCharacter;
-//Initial Location of Axe
+//Initial Location of Axe when Recalled
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 FVector InitialLocation;
-//Initial Rotation of Axe
+//Initial Rotation of Axe when Recalled
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 FRotator InitialRotator;
+//Initial Camera Rotator when Recalled
+FRotator InitialCameraRotator;
 //Enum for the AxeState 
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 EAxeState AxeState;
@@ -185,9 +187,20 @@ FRotator BaseLodgedRotator;
 //Wiggle Strength (Parameter used to multiply the timeline output value, therefore changing the rotation value)
 UPROPERTY(EditAnywhere)
 float WiggleStrength = 12.f;
-	
+//The number of units the axe will be risen up before returning to avoid clipping through the floor
+UPROPERTY(EditAnywhere)
+float AxeZReturnOffset = 50.f;
 //Store a reference to the sound the axe makes when returning, to be able to edit it later.	
 UAudioComponent* ReturnSound_Ref;
+
+//Hardcoded Optimal Distance for the Return Timeline. (Will set a timeline based on this distance and then speed it up
+//and slow it based on the difference)
+float ReturnTimelineIdealDistance = 1400.f;
+//Speed multiplier for the recall of the axe to player. 
+UPROPERTY(EditAnywhere)
+float AxeReturnSpeed = 1.f;
+
+	
 #pragma endregion
 
 
@@ -208,11 +221,18 @@ UAudioComponent* ReturnSound_Ref;
 
 	UFUNCTION(BlueprintCallable, Category = "ReturnAxe", Meta = (ExpandEnumAsExecs="OutputPin"))
 	void SetupWiggleReturn(USoundBase* SoundAsset,USoundAttenuation* SoundAttenuation,ESetupEnum& OutputPin);
+	//Mostly initialize variables and get everything ready
 	UFUNCTION(BlueprintCallable, Category = "ReturnAxe")
-        void WiggleAxe(float Rotation);
+    void SetupTimelineReturn();
+	
+	UFUNCTION(BlueprintCallable, Category = "ReturnAxe")
+    void WiggleAxe(float Rotation);
+
+	UFUNCTION(BlueprintPure, Category = "ReturnAxe") const
+	float ReturnTimelineSpeed();
 	
 	UFUNCTION(BlueprintCallable, Category = "ParticlesAxe")
-        void StartParticleTrail();
+    void StartParticleTrail();
 	
 	
 	
@@ -221,6 +241,7 @@ UAudioComponent* ReturnSound_Ref;
 	//All adjustments for polish and make the axe sticking to surfaces more realistic
 	float CalculateImpactPitchOffset();
 	FVector CalculateImpactLocation();
+	void PreventClippingOnReturn();
 
 	
 	UFUNCTION(BlueprintCallable,Category="ThrowAxe")

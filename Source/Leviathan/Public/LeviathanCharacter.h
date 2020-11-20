@@ -108,9 +108,11 @@ protected:
 	
 #pragma endregion
 	
-	UFUNCTION(BlueprintPure) bool CanThrowAxe() const;
+	UFUNCTION(BlueprintPure)
+	bool CanThrowAxe() const;
 
-	UFUNCTION(BlueprintPure) bool CanRecallAxe() const;
+	UFUNCTION(BlueprintPure)
+	bool CanRecallAxe() const;
 
 	
 protected:	
