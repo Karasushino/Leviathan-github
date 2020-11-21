@@ -116,10 +116,10 @@ float SpinAxeAxisOffset;
 //All of this is to be used to the Projectile movement component
 //Speed of the axe when thrown
 UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "AxeSettings")
-float ThrowSpeed;
+float ThrowSpeed = 2500.f;
 //Return Speed of the axe
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
-float ReturnSpeed;
+float ReturnSpeed = 1.0f;
 //Impact normal. Store the normal when impact with something, out of the Break Hit Result node.
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 FVector ImpactNormal;
@@ -149,10 +149,10 @@ int NumberOfAxeSpins;
 //Float to set the maximum distance that the axe will do the calculation from (prevents from the axe to take
 //forever to return if it goes too far).
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
-float MaxDistanceCalculation;
+float MaxDistanceCalculation = 3000.f;
 //The tilt on the X-axis of the Axe when returning, how sideways is it going to return.
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
-float ReturnAxeTilt;
+float ReturnAxeTilt = 60.f;
 //The rate that the Axe is going to speed at when returning to the hand.
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 float ReturnAxeSpinRate;
@@ -172,7 +172,7 @@ UPROPERTY(BlueprintReadWrite, EditAnywhere)
 TEnumAsByte<EPhysicalSurface> ImpactSurfaceType;
 //Scalar value to make the axe curve more pronounced or less pronounced to the right.
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
-float AxeReturnCurveScalar;
+float AxeReturnCurveScalar = 1.f;
 //Scalar value to make the snap the axe further or closer to the player when thrown.
 UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "AxeSettings")
 float AxeThrowScalar = 250.f;
@@ -197,10 +197,8 @@ UAudioComponent* ReturnSound_Ref;
 //and slow it based on the difference)
 float ReturnTimelineIdealDistance = 1400.f;
 //Speed multiplier for the recall of the axe to player. 
-UPROPERTY(EditAnywhere)
-float AxeReturnSpeed = 1.f;
+FVector ReturnTargetLocation;
 
-	
 #pragma endregion
 
 
@@ -234,7 +232,10 @@ float AxeReturnSpeed = 1.f;
 	UFUNCTION(BlueprintCallable, Category = "ParticlesAxe")
     void StartParticleTrail();
 	
-	
+	UFUNCTION(BlueprintCallable, Category = "ReturnAxe")
+	void UpdateReturnAxePosition(float InitialAlphaRotation, float CloseAlphaRotation, float AxeCurvature, float Speed,
+		float Volume);
+
 	
 	
 

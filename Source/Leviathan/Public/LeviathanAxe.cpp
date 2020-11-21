@@ -6,6 +6,7 @@
 #include "LeviathanCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Components/SceneComponent.h"
+#include "Components/AudioComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -74,7 +75,7 @@ void ALeviathanAxe::Throw()
 		ThrowCameraRotator = Player->FollowCamera->GetComponentRotation();
 		ThrowDirection = Player->FollowCamera->GetForwardVector();
 		ThrowCameraLocation = Player->FollowCamera->GetComponentLocation();
-		ThrowSpeed = 2500.f;
+		
 		
 		MoveAxeToStartPosition();
 		ProjectAxe();
@@ -176,7 +177,7 @@ void ALeviathanAxe::SetupTimelineReturn()
 	//Setup al variables here
 	InitialLocation = GetActorLocation();
 	InitialRotator = GetActorRotation();
-	ThrowCameraRotator = Player->FollowCamera->GetComponentRotation();
+	InitialCameraRotator = Player->FollowCamera->GetComponentRotation();
 	//Return Lodge Point rotation to normal for smoothly bringing the axe back
 	LodgePoint->SetRelativeRotation(FRotator(0,0,0));
 }
@@ -283,7 +284,37 @@ void ALeviathanAxe::StartParticleTrail()
 	AxeState = EAxeState::Returning;
 }
 
+void ALeviathanAxe::UpdateReturnAxePosition(float InitialAlphaRotation, float CloseAlphaRotation, float AxeCurvature,
+	float Speed,float Volume)
+{
+	//Adjusts the curve based on distance from the character and a parameter to scale the curvature
+	//Lower number = more curve
+	float CurveLocation = (DistanceFromCharacter/AxeReturnCurveScalar)*AxeCurvature;
+	//Get the vector to the right of the axe to apply the curvature
+	FVector RightVector = Player->FollowCamera->GetRightVector()*CurveLocation;
+	//Add the right Vector based on the location of the Axe Socket. This is why we use the Curve Timeline
+	//This creates the curve by sending bigger and smaller multipliers
+	FVector CalculatedCurveAxeLocation = Player->GetMesh()->GetSocketLocation(TEXT("AxeSocket"))+ RightVector;
+	//Smoothly interpolate between the 2 locations, using the Speed parameter from the timeline.
+	ReturnTargetLocation = FMath::Lerp(InitialLocation,CalculatedCurveAxeLocation,Speed);
 
+	//Here calculate the Rotation (Axe changes tilt base on distance for polish effect, tilts more or less based on distance)
+	FRotator StartingRotator = FMath::Lerp(InitialRotator,FRotator(InitialCameraRotator.Pitch,InitialCameraRotator.Yaw,ReturnAxeTilt),InitialAlphaRotation);
+	//This rotator will start to blend with the Alpha once its closer to the AxeSocket, to adjust the axe to the hand of the player.
+	FRotator FinalRotator = FMath::Lerp(StartingRotator,Player->GetMesh()->GetSocketRotation(TEXT("AxeSocket")),CloseAlphaRotation);
+	
+	
+	//Tick the Actor Location and Rotation based on the Timeline
+	SetActorLocationAndRotation(ReturnTargetLocation,FinalRotator);
+
+	//Get stored reference to the sound spawned and increase the volume as it gets closer to player based on Timeline
+	//Check if there's something in the pointer
+	if(ReturnSound_Ref)
+	{
+		ReturnSound_Ref->SetVolumeMultiplier(Volume);
+	}
+	
+}
 
 
 // Called every frame
