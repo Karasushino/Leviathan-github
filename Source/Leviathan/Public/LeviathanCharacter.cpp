@@ -2,6 +2,8 @@
 
 #include "LeviathanCharacter.h"
 
+
+#include "LeviathanAxe.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -66,7 +68,6 @@ void ALeviathanCharacter::BeginPlay()
 	LeviathanAxeChildActorComponent->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,
 		TEXT("RightHandWeaponBoneSocket"));
 	
-	//I need to get a reference of the Blueprint here
 }
 
 
@@ -110,7 +111,7 @@ void ALeviathanCharacter::Aim()
 		//Need to add hud here
 		//Need to set ON ranged attack mode from animation blueprint
 		//Use controller rotation so player looks where he is aiming
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Yaw set to true"));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Yaw set to true"));
 		GetCharacterMovement()->MaxWalkSpeed = AimWalkSpeed;
 	}
 	else
@@ -124,7 +125,7 @@ void ALeviathanCharacter::Aim()
 		//Need to hide HUD here
 		//Need to set OFF ranged attack mode from animation blueprint
 		
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Yaw set to false"));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Yaw set to false"));
 
 		GetCharacterMovement()->MaxWalkSpeed = IdleWalkSpeed;
 
@@ -138,6 +139,15 @@ void ALeviathanCharacter::LerpCameraPosition(float LerpCurve)
 	CameraBoom->TargetArmLength = FMath::Lerp(IdleSpringArmLength,AimSpringArmLength,LerpCurve);
 	LerpedSocketOffset = FMath::Lerp(IdleCameraVector,AimCameraVector,LerpCurve);
 	CameraBoom->SocketOffset = LerpedSocketOffset;
+	
+}
+
+void ALeviathanCharacter::CatchAxe(AActor *Axe)
+{
+	Axe->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,TEXT("RightHandWeaponBoneSocket"));
+	bAxeThrown = false;
+	bAxeRecalled = false;
+	Cast<ALeviathanAxe>(Axe)->AxeState = EAxeState::Idle;
 	
 }
 
@@ -196,3 +206,4 @@ bool ALeviathanCharacter::CanRecallAxe() const
 		return true;
 	return false;
 }
+

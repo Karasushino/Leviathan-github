@@ -7,11 +7,15 @@
 #include "GameFramework/Actor.h"
 #include "Engine/EngineTypes.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "UObject/ObjectMacros.h"
+
 #include "LeviathanAxe.generated.h"
 
 //Enum for output pins
 UENUM(BlueprintType)
 enum class ESetupEnum : uint8 {Launched,Lodged};
+UENUM(BlueprintType)
+enum class ESpinsFunctionOutputEnum : uint8 {Spinning,Done};
 
 
 UENUM()
@@ -144,7 +148,6 @@ FVector PreviousAxeLocation;
 UPROPERTY(BlueprintReadWrite, EditAnywhere)
 FVector CurrentAxeLocation;
 //The number of spins to do when returning (This number changes based on the distance from the axe to the player)
-UPROPERTY(BlueprintReadWrite, EditAnywhere)
 int NumberOfAxeSpins;
 //Float to set the maximum distance that the axe will do the calculation from (prevents from the axe to take
 //forever to return if it goes too far).
@@ -198,7 +201,11 @@ UAudioComponent* ReturnSound_Ref;
 float ReturnTimelineIdealDistance = 1400.f;
 //Speed multiplier for the recall of the axe to player. 
 FVector ReturnTargetLocation;
+//Float to change the distance at where the axe will stop rotating. Lowest means closer to the player. 
+UPROPERTY(EditAnywhere)
+float ReturnSpinAxeStopDistanceOffset = 0.1f;
 
+float AxeReturnTimelineSpeed;
 #pragma endregion
 
 
@@ -236,8 +243,10 @@ FVector ReturnTargetLocation;
 	void UpdateReturnAxePosition(float InitialAlphaRotation, float CloseAlphaRotation, float AxeCurvature, float Speed,
 		float Volume);
 
-	
-	
+	UFUNCTION(BlueprintCallable, Category = "ReturnAxe")
+	float PlaySoundAndReturnAxeSpinTimelineRate(float TimelineRate);
+	UFUNCTION(BlueprintCallable, Category = "ReturnAxe",Meta = (ExpandEnumAsExecs="OutputPin"))
+	void DecreaseNumberOfSpins(ESpinsFunctionOutputEnum& OutputPin);
 
 	//All adjustments for polish and make the axe sticking to surfaces more realistic
 	float CalculateImpactPitchOffset();

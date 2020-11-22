@@ -61,13 +61,14 @@ void ALeviathanAxe::BeginPlay()
 }
 
 
+
 void ALeviathanAxe::Throw()
 {
 	
 	//Only execute if player was aiming and the axe was not thrown already
 	if(!Player->bAxeThrown)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Throw was called"));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Throw was called"));
 		//Detach the Axe from the player
 		this->DetachFromActor(FDetachmentTransformRules(EDetachmentRule::KeepWorld,true));
 		//
@@ -166,6 +167,7 @@ void ALeviathanAxe::SetupWiggleReturn(USoundBase* SoundAsset,USoundAttenuation* 
 
 void ALeviathanAxe::SetupTimelineReturn()
 {
+	Player->bAxeRecalled = true;
 	//Get the difference between the Axe and the socket of the player mesh.
 	FVector LocationVector = FVector(GetActorLocation() - Player->GetMesh()->GetSocketLocation(TEXT("AxeSocket")));
 	//Clamp the distance so its not too far and convert to a float.
@@ -199,7 +201,7 @@ const float ALeviathanAxe::ReturnTimelineSpeed()
 	TimelineSpeed /= DistanceFromCharacter;
 	//Clamp the value for polish
 	FMath::Clamp(TimelineSpeed,0.4f,7.5f);
-	
+	AxeReturnTimelineSpeed = TimelineSpeed;
 	return TimelineSpeed;
 }
 
@@ -261,8 +263,8 @@ bool ALeviathanAxe::ChangeGravityAndHit(float gravity)
 	FVector End = GetActorLocation()+FVector(0,0,41) + (GetActorRotation().Vector() * AxeTraceDistance);
 	GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
 
-	DrawDebugLine(GetWorld(),Start, End,FColor(255, 0, 0),false,
-        7, 0,5);
+	// DrawDebugLine(GetWorld(),Start, End,FColor(255, 0, 0),false,
+ //        7, 0,5);
 
 	
 	if(HitResult.bBlockingHit)
@@ -312,8 +314,42 @@ void ALeviathanAxe::UpdateReturnAxePosition(float InitialAlphaRotation, float Cl
 	if(ReturnSound_Ref)
 	{
 		ReturnSound_Ref->SetVolumeMultiplier(Volume);
+		
 	}
 	
+}
+
+float ALeviathanAxe::PlaySoundAndReturnAxeSpinTimelineRate(float TimelineRate)
+{
+	//Play all the sounds and stuff here.
+	//If its moving forward stop the rotation timeline.
+	StopSpinAxe();
+	//Need to convert from seconds to Length for calculations
+	float TimelineLength = 1.f/TimelineRate;
+	//Offset the length
+	float OffsettedLength = TimelineLength - ReturnSpinAxeStopDistanceOffset;
+	//Calculate the number of spin needed based on the spin rate.
+	NumberOfAxeSpins = FMath::RoundToInt(TimelineLength/ReturnAxeSpinRate);
+	//Do the Length of the time line over the number of spins to get the length of the spins.
+	float SpinLength = OffsettedLength/NumberOfAxeSpins;
+	//Convert the SpinLength back to TimeLine Play rate, just divide again by 1
+	//Return the value (How fast the Timeline will play)
+	return 1.f/SpinLength;
+}
+
+void ALeviathanAxe::DecreaseNumberOfSpins(ESpinsFunctionOutputEnum& OutputPin)
+{
+	//If there's one spin remaining its already playing, so don't play again or you will get an extra one.
+	if(NumberOfAxeSpins == 1)
+	{
+		OutputPin = ESpinsFunctionOutputEnum::Done;
+	}
+	else
+	{
+		//Decrease number of spins and run again the timeline
+		NumberOfAxeSpins--;
+		OutputPin = ESpinsFunctionOutputEnum::Spinning;
+	}
 }
 
 

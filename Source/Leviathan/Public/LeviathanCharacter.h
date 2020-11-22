@@ -3,6 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+
+#include "LeviathanAxe.h"
 #include "GameFramework/Character.h"
 #include "LeviathanCharacter.generated.h"
 
@@ -57,7 +60,6 @@ public:
 	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = "true"), Category=Camera)
 	float NormalTurnRate = 50.f;
 
-	
 #pragma endregion
 
 #pragma region Movement Variables
@@ -107,6 +109,9 @@ protected:
 	void LerpCameraPosition(float LerpCurve);
 	
 #pragma endregion
+
+	UFUNCTION(BlueprintCallable, Category = CatchAxe)
+    void CatchAxe(AActor *Axe);
 	
 	UFUNCTION(BlueprintPure)
 	bool CanThrowAxe() const;
